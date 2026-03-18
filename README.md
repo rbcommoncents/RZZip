@@ -385,23 +385,6 @@ Possible future directions include:
 
 ## License
 
-Choose the license that fits your goals.
-
-Common choices:
-
-- MIT
-- Apache-2.0
-- GPL-3.0
-
-Example placeholder:
-
-```text
-MIT License
-```
----
-
-## License
-
 This project is licensed under the Apache License 2.0.
 See the `LICENSE` file for details.
 

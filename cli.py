@@ -440,18 +440,18 @@ def inspect_file(input_path: str, top: int = 10) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Version 10 hardened .rzlog compressor",
+        description="Version 10 hardened .rzzip compressor",
         epilog=(
             "Examples:\n"
-            "  python3 main.py compress app.log archive.rzlog --backend gzip --progress\n"
-            "  python3 main.py decompress archive.rzlog restored.log --progress\n"
-            "  python3 main.py inspect archive.rzlog --top 20"
+            "  python3 main.py compress app.log archive.rzzip --backend gzip --progress\n"
+            "  python3 main.py decompress archive.rzzip restored.log --progress\n"
+            "  python3 main.py inspect archive.rzzip --top 20"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     sub = parser.add_subparsers(dest="command", required=True)
 
-    c = sub.add_parser("compress", help="Compress a supported text/log file into an .rzlog archive")
+    c = sub.add_parser("compress", help="Compress a supported text/log file into an .rzzip archive")
     c.add_argument("input_file")
     c.add_argument("output_file")
     c.add_argument("--mode", choices=["auto", "raw", "template"], default="auto")
@@ -469,7 +469,7 @@ def build_parser() -> argparse.ArgumentParser:
     c.add_argument("--no-checksum", action="store_true")
     c.add_argument("--report-chunks", action="store_true")
 
-    d = sub.add_parser("decompress", help="Decompress an .rzlog archive back to text")
+    d = sub.add_parser("decompress", help="Decompress an .rzzip archive back to text")
     d.add_argument("input_file")
     d.add_argument("output_file")
     d.add_argument("--no-verify", action="store_true")

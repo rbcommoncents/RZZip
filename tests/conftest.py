@@ -24,7 +24,7 @@ def sample_log_file(tmp_path: Path, sample_log_text: str) -> Path:
 
 @pytest.fixture
 def archive_file(tmp_path: Path) -> Path:
-    return tmp_path / "sample.rzlog"
+    return tmp_path / "sample.rzzip"
 
 
 @pytest.fixture

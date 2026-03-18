@@ -40,7 +40,7 @@ def test_ensure_input_suffix_bad(tmp_path: Path) -> None:
 
 
 def test_ensure_archive_suffix_ok(tmp_path: Path) -> None:
-    p = tmp_path / "a.rzlog"
+    p = tmp_path / "a.rzzip"
     assert ensure_archive_suffix(str(p)) == p
 
 
@@ -58,7 +58,7 @@ def test_validate_compress_paths_same_file(tmp_path: Path) -> None:
 
 
 def test_validate_decompress_paths_same_file(tmp_path: Path) -> None:
-    p = tmp_path / "same.rzlog"
+    p = tmp_path / "same.rzzip"
     p.write_bytes(b"abc")
     with pytest.raises(ValidationError):
         validate_decompress_paths(str(p), str(p))
@@ -66,7 +66,7 @@ def test_validate_decompress_paths_same_file(tmp_path: Path) -> None:
 
 def test_validate_compress_paths_ok(tmp_path: Path) -> None:
     src = tmp_path / "in.log"
-    dst = tmp_path / "out.rzlog"
+    dst = tmp_path / "out.rzzip"
     src.write_text("x", encoding="utf-8")
     in_path, out_path = validate_compress_paths(str(src), str(dst))
     assert in_path == src
@@ -74,7 +74,7 @@ def test_validate_compress_paths_ok(tmp_path: Path) -> None:
 
 
 def test_validate_decompress_paths_ok(tmp_path: Path) -> None:
-    src = tmp_path / "in.rzlog"
+    src = tmp_path / "in.rzzip"
     dst = tmp_path / "out.log"
     src.write_bytes(b"abc")
     in_path, out_path = validate_decompress_paths(str(src), str(dst))

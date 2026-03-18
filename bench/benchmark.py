@@ -101,7 +101,7 @@ def bench_rzlog(
     backend_level: int,
     mode: str,
 ) -> dict:
-    archive_path = output_dir / f"{input_path.stem}.{profile}.{backend}.rzlog"
+    archive_path = output_dir / f"{input_path.stem}.{profile}.{backend}.rzzip"
     restored_path = output_dir / f"{input_path.stem}.{profile}.{backend}.restored.log"
 
     parser = build_parser()

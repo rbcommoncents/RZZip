@@ -24,7 +24,7 @@ def test_truncated_archive_raises(sample_log_file: Path, archive_file: Path, tmp
     )
     compress_file(str(sample_log_file), str(archive_file), args)
 
-    bad = tmp_path / "truncated.rzlog"
+    bad = tmp_path / "truncated.rzzip"
     blob = archive_file.read_bytes()
     bad.write_bytes(blob[:-10])
 
@@ -33,7 +33,7 @@ def test_truncated_archive_raises(sample_log_file: Path, archive_file: Path, tmp
 
 
 def test_bad_magic_raises(tmp_path: Path) -> None:
-    bad = tmp_path / "bad.rzlog"
+    bad = tmp_path / "bad.rzzip"
     bad.write_bytes(b"BAD!" + b"\x00" * 52)
     with pytest.raises(FormatError):
         with bad.open("rb") as f:
@@ -41,7 +41,7 @@ def test_bad_magic_raises(tmp_path: Path) -> None:
 
 
 def test_bad_version_raises(tmp_path: Path) -> None:
-    bad = tmp_path / "badver.rzlog"
+    bad = tmp_path / "badver.rzzip"
     blob = bytearray()
     blob.extend(b"RZLG")
     blob.append(99)
@@ -71,7 +71,7 @@ def test_checksum_mismatch_raises(sample_log_file: Path, archive_file: Path, tmp
 
     blob = bytearray(archive_file.read_bytes())
     blob[-1] ^= 0xFF  # flip last byte
-    bad = tmp_path / "checksum_bad.rzlog"
+    bad = tmp_path / "checksum_bad.rzzip"
     bad.write_bytes(bytes(blob))
 
     with pytest.raises((ChecksumMismatchError, CorruptArchiveError)):

@@ -41,7 +41,7 @@ DEFAULT_ALLOWED_INPUT_SUFFIXES = {
     ".csv",
 }
 
-DEFAULT_ARCHIVE_SUFFIX = ".rzlog"
+DEFAULT_ARCHIVE_SUFFIX = ".rzzip"
 
 PROFILE_DEFAULTS = {
     "fast": {
